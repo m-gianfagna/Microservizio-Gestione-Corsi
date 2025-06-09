@@ -29,7 +29,7 @@ Tabella **Docente**
 
 | Colonna | Tipo | Descrizione | Vincoli |
 |---------|------|-------------|---------|
-| `id` | **UUID** | identificatore univoco del docente | PRIMARY KEY |
+| `id` | **String** | identificatore univoco del docente | PRIMARY KEY |
 | `nome` | **String** | nome del docente | NOT NULL |
 | `cognome` | **String** | cognome del docente | NOT NULL |
 | `email` | **String** | email del docente |  UNIQUE NOT NULL |
@@ -37,7 +37,7 @@ Tabella **Docente**
 Tabella **Corso**
 | Colonna | Tipo | Descrizione | Vincoli |
 |---------|------|-------------|---------|
-| `id` | **UUID** | identificatore univoco del corso | PRIMARY KEY |
+| `id` | **String** | identificatore univoco del corso | PRIMARY KEY |
 | `nome` | **String** | nome del corso | NOT NULL |
 | `codice` | **String** | codice del corso | UNIQUE NOT NULL |
 | `descrizione` | **TEXT** | descrizione del corso | - |
@@ -46,15 +46,15 @@ Tabella **Corso**
 Tabella **Corso Docente**
 | Colonna | Tipo | Descrizione | Vincoli |
 |---------|------|-------------|---------|
-| `corso_id` | **UUID** | identificatore univoco del corso | ON DELETE CASCADE |
-| `docente_id` | **UUID** | identificatore univoco del docente | ON DELETE CASCADE |
+| `corso_id` | **String** | identificatore univoco del corso | ON DELETE CASCADE |
+| `docente_id` | **String** | identificatore univoco del docente | ON DELETE CASCADE |
 | | | | PRIMARY KEY (corso_id, docente_id) |
 
 Tabella **Orario**
 | Colonna | Tipo | Descrizione | Vincoli |
 |---------|------|-------------|---------|
-| `id` | **UUID** | identificatore univoco dell'orario | PRIMARY KEY |
-| `corso_id` | **UUID** | identificatore univoco del corso | ON DELETE CASCADE |
+| `id` | **String** | identificatore univoco dell'orario | PRIMARY KEY |
+| `corso_id` | **String** | identificatore univoco del corso | ON DELETE CASCADE |
 | `giorno` | **String** | giorno previsto di lezione da orario  | NOT NULL |
 | `ora_inizio` | **TIME** | orario d'inizio del corso | NOT NULL |
 | `ora_fine` | **TIME** | orario di fine del corso | NOT NULL |
@@ -74,7 +74,7 @@ public class CorsoRequestDTO {
     private String codice;
     private String descrizione;
     private int cfu;
-    private List<UUID> docentiIds;
+    private List<String> docentiIds;
     private List<OrarioDTO> orari;
 }
 ```
@@ -85,7 +85,7 @@ public class CorsoRequestDTO {
 // Usato per la visualizzazione dell’elenco dei corsi e dei dettagli di un singolo corso.
 
 public class CorsoResponseDTO {
-    private UUID id;
+    private String id;
     private String nome;
     private String codice;
     private String descrizione;
@@ -101,7 +101,7 @@ public class CorsoResponseDTO {
 // Usato per rappresentare le informazioni base di un docente associato a un corso.
 
 public class DocenteDTO {
-    private UUID id;
+    private String id;
     private String nome;
     private String cognome;
     private String email;
@@ -114,7 +114,7 @@ public class DocenteDTO {
 // Usato per rappresentare le fasce orarie di svolgimento di un corso.
 
 public class OrarioDTO {
-    private UUID id;
+    private String id;
     private String giorno;
     private String oraInizio;
     private String oraFine;
@@ -124,7 +124,7 @@ public class OrarioDTO {
 
 ## API REST
 
-### CORSI ENDPOINTS
+### ENDPOINT PER GLI AMMINISTRATORI
 
 ```bash
 #############################################################
@@ -134,30 +134,32 @@ public class OrarioDTO {
 # @return: ResponseEntity<CorsoResponseDTO>
 # @access: Amministrativi
 #############################################################
-POST    /corsi
+POST    /api/v1/corsi
 ```
 
 ```bash
 #############################################################
 # Modifica un corso esistente
 # @func: updateCorso()
-# @param: UUID id, CorsoRequestDTO corsoDTO
+# @param: String id, CorsoRequestDTO corsoDTO
 # @return: ResponseEntity<Void>
 # @access: Amministrativi
 #############################################################
-PUT     /corsi/{id}
+PUT     /api/v1/corsi/{id}
 ```
 
 ```bash
 #############################################################
 # Elimina un corso
 # @func: deleteCorso()
-# @param: UUID id
+# @param: String id
 # @return: ResponseEntity<Void>
 # @access: Amministrativi
 #############################################################
-DELETE  /corsi/{id}
+DELETE  /api/v1/corsi/{id}
 ```
+
+### ENDPOINT PER TUTTI
 
 ```bash
 #############################################################
@@ -166,16 +168,16 @@ DELETE  /corsi/{id}
 # @return: ResponseEntity<List<CorsoResponseDTO>>
 # @access: Tutti
 #############################################################
-GET     /corsi
+GET     /api/v1/corsi
 ```
 
 ```bash
 #############################################################
 # Ottieni i dettagli di un singolo corso
 # @func: getCorsoById()
-# @param: UUID id
+# @param: String id
 # @return: ResponseEntity<CorsoResponseDTO>
 # @access: Tutti
 #############################################################
-GET     /corsi/{id}
+GET     /api/v1/corsi/{id}
 ```
