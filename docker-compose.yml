@@ -1,0 +1,41 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: corsi_postgres
+    environment:
+      POSTGRES_USER: courses
+      POSTGRES_PASSWORD: courses
+      POSTGRES_DB: corsidb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: corsi_rabbitmq
+    ports:
+      - "5672:5672"   # Porta RabbitMQ
+      - "15672:15672" # Interfaccia web management
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
+  microservizio-corsi:
+    build: .
+    container_name: microservizio_corsi
+    depends_on:
+      - postgres
+      - rabbitmq
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/corsidb
+      SPRING_DATASOURCE_USERNAME: courses
+      SPRING_DATASOURCE_PASSWORD: courses
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+
+volumes:
+  pgdata:
+
