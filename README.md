@@ -7,7 +7,7 @@
     - [Architettura Database](#architettura-database)
     - [DTO](#dto)
     - [API REST](#api-rest)
-4. [Build & run](#build-&-run)
+4. [Build & run](#build--run)
     - [Cancellare eventuali volumi](#cancellare-eventuali-volumi)
     - [Build](#build)
     - [Avviare docker](#avviare-docker)
@@ -186,7 +186,7 @@ GET     /api/v1/corsi
 GET     /api/v1/corsi/{id}
 ```
 
-### Build & run
+## Build & run
 
 ### Cancellare eventuali volumi
 ```bash
