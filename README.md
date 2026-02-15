@@ -7,6 +7,10 @@
     - [Architettura Database](#architettura-database)
     - [DTO](#dto)
     - [API REST](#api-rest)
+4. [Build & run](#build-&-run)
+    - [Cancellare eventuali volumi](#cancellare-eventuali-volumi)
+    - [Build](#build)
+    - [Avviare docker](#avviare-docker)
 
 ## Panoramica
 Questo microservizio è responsabile della memorizzazione e della gestione delle informazioni relative ai corsi universitari:
@@ -180,4 +184,21 @@ GET     /api/v1/corsi
 # @access: Tutti
 #############################################################
 GET     /api/v1/corsi/{id}
+```
+
+### Build & run
+
+### Cancellare eventuali volumi
+```bash
+docker compose down -v
+```
+
+### Build
+```bash
+docker compose build --no-cache
+```
+
+### Avviare docker
+```bash
+docker compose -f docker-compose.yml up
 ```
