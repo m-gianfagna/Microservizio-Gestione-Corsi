@@ -1,0 +1,16 @@
+/home/mark/Scrivania/Esami/Microservizi/Microservizio/microservizio-gestione-corsi/src/main/java/it/newunimol/corsi/config/RabbitConfig.java
+/home/mark/Scrivania/Esami/Microservizi/Microservizio/microservizio-gestione-corsi/src/main/java/it/newunimol/corsi/entity/Docente.java
+/home/mark/Scrivania/Esami/Microservizi/Microservizio/microservizio-gestione-corsi/src/main/java/it/newunimol/corsi/Application.java
+/home/mark/Scrivania/Esami/Microservizi/Microservizio/microservizio-gestione-corsi/src/main/java/it/newunimol/corsi/config/OpenApiConfig.java
+/home/mark/Scrivania/Esami/Microservizi/Microservizio/microservizio-gestione-corsi/src/main/java/it/newunimol/corsi/controller/CorsoController.java
+/home/mark/Scrivania/Esami/Microservizi/Microservizio/microservizio-gestione-corsi/src/main/java/it/newunimol/corsi/dto/CorsoResponseDTO.java
+/home/mark/Scrivania/Esami/Microservizi/Microservizio/microservizio-gestione-corsi/src/main/java/it/newunimol/corsi/dto/CorsoRequestDTO.java
+/home/mark/Scrivania/Esami/Microservizi/Microservizio/microservizio-gestione-corsi/src/main/java/it/newunimol/corsi/messaging/CorsoEventListener.java
+/home/mark/Scrivania/Esami/Microservizi/Microservizio/microservizio-gestione-corsi/src/main/java/it/newunimol/corsi/repository/DocenteRepository.java
+/home/mark/Scrivania/Esami/Microservizi/Microservizio/microservizio-gestione-corsi/src/main/java/it/newunimol/corsi/messaging/CorsoEventProducer.java
+/home/mark/Scrivania/Esami/Microservizi/Microservizio/microservizio-gestione-corsi/src/main/java/it/newunimol/corsi/dto/DocenteDTO.java
+/home/mark/Scrivania/Esami/Microservizi/Microservizio/microservizio-gestione-corsi/src/main/java/it/newunimol/corsi/dto/OrarioDTO.java
+/home/mark/Scrivania/Esami/Microservizi/Microservizio/microservizio-gestione-corsi/src/main/java/it/newunimol/corsi/entity/Orario.java
+/home/mark/Scrivania/Esami/Microservizi/Microservizio/microservizio-gestione-corsi/src/main/java/it/newunimol/corsi/service/CorsoService.java
+/home/mark/Scrivania/Esami/Microservizi/Microservizio/microservizio-gestione-corsi/src/main/java/it/newunimol/corsi/entity/Corso.java
+/home/mark/Scrivania/Esami/Microservizi/Microservizio/microservizio-gestione-corsi/src/main/java/it/newunimol/corsi/repository/CorsoRepository.java

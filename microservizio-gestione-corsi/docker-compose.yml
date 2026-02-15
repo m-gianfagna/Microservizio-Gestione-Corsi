@@ -1,0 +1,52 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres_corsi
+    restart: always
+    environment:
+      POSTGRES_DB: corsi_db
+      POSTGRES_USER: corsi_user
+      POSTGRES_PASSWORD: corsi_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U corsi_user -d corsi_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq_corsi
+    restart: always
+    ports:
+      - "5672:5672"   # AMQP
+      - "15672:15672" # management web UI
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "check_running"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  microservizio_corsi:
+    build: .
+    container_name: microservizio_corsi
+    depends_on:
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/corsi_db
+      SPRING_DATASOURCE_USERNAME: corsi_user
+      SPRING_DATASOURCE_PASSWORD: corsi_pass
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+    ports:
+      - "8080:8080"
+
+volumes:
+  postgres_data:
+

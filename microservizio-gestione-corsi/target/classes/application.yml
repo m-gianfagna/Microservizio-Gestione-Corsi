@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres:5432/corsi_db
+    username: corsi_user
+    password: corsi_pass
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  sql:
+    init:
+      mode: always
+
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+
+spring.rabbitmq.template.retry.enabled: true
+spring.rabbitmq.template.retry.initial-interval: 2000
+spring.rabbitmq.template.retry.max-attempts: 10
+spring.rabbitmq.template.retry.multiplier: 2.0
+
+server:
+  port: 8080
+

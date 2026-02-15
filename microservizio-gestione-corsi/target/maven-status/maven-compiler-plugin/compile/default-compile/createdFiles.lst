@@ -1,0 +1,16 @@
+it/newunimol/corsi/dto/OrarioDTO.class
+it/newunimol/corsi/dto/CorsoResponseDTO.class
+it/newunimol/corsi/entity/Orario.class
+it/newunimol/corsi/repository/CorsoRepository.class
+it/newunimol/corsi/messaging/CorsoEventListener.class
+it/newunimol/corsi/entity/Corso.class
+it/newunimol/corsi/controller/CorsoController.class
+it/newunimol/corsi/repository/DocenteRepository.class
+it/newunimol/corsi/entity/Docente.class
+it/newunimol/corsi/config/OpenApiConfig.class
+it/newunimol/corsi/Application.class
+it/newunimol/corsi/dto/CorsoRequestDTO.class
+it/newunimol/corsi/messaging/CorsoEventProducer.class
+it/newunimol/corsi/dto/DocenteDTO.class
+it/newunimol/corsi/config/RabbitConfig.class
+it/newunimol/corsi/service/CorsoService.class
