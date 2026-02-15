@@ -1,13 +1,28 @@
 package it.newunimol.corsi.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.List;
+import java.io.Serializable;
 
-public class CorsoRequestDTO {
+@Schema(description = "DTO per la creazione di un nuovo corso")
+public class CorsoRequestDTO implements Serializable {
+    
+    @Schema(description = "Nome del corso", example = "Programmazione Java")
     private String nome;
+    
+    @Schema(description = "Codice univoco del corso", example = "INF001")
     private String codice;
+    
+    @Schema(description = "Descrizione del corso", example = "Corso introduttivo di programmazione Java")
     private String descrizione;
+    
+    @Schema(description = "Crediti formativi universitari", example = "9")
     private int cfu;
+    
+    @Schema(description = "Lista degli UUID dei docenti associati", example = "[\"00000000-0000-0000-0000-000000000001\"]")
     private List<String> docentiIds;
+    
+    @Schema(description = "Orari del corso (l'ID viene generato automaticamente)")
     private List<OrarioDTO> orari;
 
     // Getters e Setters
@@ -29,4 +44,3 @@ public class CorsoRequestDTO {
     public List<OrarioDTO> getOrari() { return orari; }
     public void setOrari(List<OrarioDTO> orari) { this.orari = orari; }
 }
-

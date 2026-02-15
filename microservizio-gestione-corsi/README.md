@@ -181,3 +181,18 @@ GET     /api/v1/corsi
 #############################################################
 GET     /api/v1/corsi/{id}
 ```
+
+### Cancellare eventuali volumi
+```bash
+docker compose down -v
+```
+
+### Build
+```bash
+docker compose build --no-cache
+```
+
+### Avviare docker
+```bash
+docker compose -f docker-compose.yml up
+```
